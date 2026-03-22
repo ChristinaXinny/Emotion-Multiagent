@@ -1,0 +1,108 @@
+# Emotion Multi-Agent System Configuration
+
+# Project settings
+project:
+  name: "emotion_multiagent"
+  version: "0.1.0"
+  description: "Multi-agent system for financial sentiment analysis"
+
+# Data settings
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  external_dir: "data/external"
+
+  # Preprocessing settings
+  min_text_length: 50
+  max_text_length: 5000
+
+  # Data split ratios
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+# Agent settings
+agents:
+  # Perception Agent (FinBERT)
+  perception_agent:
+    model_name: "ProsusAI/finbert"
+    device: "cuda"  # or "cpu"
+    batch_size: 8
+
+  # Inference Agent (LLM)
+  inference_agent:
+    api_key: null  # Set via ANTHROPIC_API_KEY environment variable
+    model: "claude-3-5-sonnet-20241022"
+    max_tokens: 1024
+    temperature: 0.3
+
+  # Coordinator Agent
+  coordinator_agent:
+    enable_caching: true
+    log_intermediate_steps: true
+
+# Feature engineering settings
+features:
+  # Rolling windows for sentiment features
+  rolling_windows: [3, 7, 14, 30]
+
+  # Momentum periods
+  momentum_periods: [1, 3, 7]
+
+  # Volatility windows
+  volatility_windows: [7, 14, 30]
+
+# Evaluation settings
+evaluation:
+  # Metrics to calculate
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - confusion_matrix
+    - agreement_metrics
+
+  # Classification average method
+  average_method: "weighted"
+
+# Output settings
+output:
+  features_dir: "outputs/features"
+  logs_dir: "outputs/logs"
+  models_dir: "outputs/models"
+
+# Logging settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_logging: true
+  console_logging: true
+
+# Stock mapping settings
+stock_mapping:
+  # Common stock tickers to recognize
+  common_tickers:
+    - AAPL
+    - MSFT
+    - GOOGL
+    - AMZN
+    - TSLA
+    - META
+    - NVDA
+    - JPM
+    - BAC
+    - WMT
+
+  # Company name to ticker mappings
+  ticker_map:
+    Apple: AAPL
+    Microsoft: MSFT
+    Google: GOOGL
+    Amazon: AMZN
+    Tesla: TSLA
+    Meta: META
+    NVIDIA: NVDA
+    JPMorgan: JPM
+    Bank of America: BAC
+    Walmart: WMT
