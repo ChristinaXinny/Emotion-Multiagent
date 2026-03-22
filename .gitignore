@@ -71,3 +71,7 @@ Thumbs.db
 # Project specific
 config/local_config.yaml
 *.log
+
+
+notebooks/02_A_finbert/finbert_model/pytorch_model.bin
+notebooks/02_A_finbert/finbert_model/tf_model.h5
