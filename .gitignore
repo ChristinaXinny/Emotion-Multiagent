@@ -57,6 +57,7 @@ checkpoints/
 *.pth
 *.bin
 *.safetensors
+*.h5
 
 # Outputs
 outputs/logs/*
@@ -75,3 +76,7 @@ config/local_config.yaml
 
 notebooks/02_A_finbert/finbert_model/pytorch_model.bin
 notebooks/02_A_finbert/finbert_model/tf_model.h5
+
+# 但允许特定文件不被忽略
+!config.json
+
